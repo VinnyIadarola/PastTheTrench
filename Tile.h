@@ -57,12 +57,12 @@ class Tile {
         /**********************************************************
         **              Constructors & Destructors               **
         **********************************************************/
-        Tile(TileType _type = TileType::GROUND, 
-            Cover _cover = {}, 
-            int _traverse_cost = 1, 
-            Unit* _occupied_by = nullptr,
-            int _row = 0,
-            int _col = 0
+        Tile(TileType _type, 
+            Cover _cover, 
+            int _traverse_cost, 
+            Unit* _occupied_by,
+            int _row,
+            int _col
         );
         virtual ~Tile();
 

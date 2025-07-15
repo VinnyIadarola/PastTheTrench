@@ -33,14 +33,13 @@ class Grid {
         /**********************************************************
         **                     Public Fields                     **
         **********************************************************/
-        vector<vector<Tile>> board;
 
 
         /**********************************************************
         **              Constructors & Destructors               **
         **********************************************************/
         Grid(int _rows, int _cols);
-        virtual ~Grid() = default;
+        virtual ~Grid();
 
         /**********************************************************
         **                    Public Functions                   **
@@ -49,12 +48,15 @@ class Grid {
         vector<Tile> get_row(int r);
         vector<Tile> get_col(int c);
         Tile at(int r, int c);
+        bool in_bounds(int row, int col);
 
     private:
         /**********************************************************
         **                     Private Fields                    **
         **********************************************************/
         int rows, cols;
+        vector<vector<Tile>> board;
+
         
 
         /**********************************************************
