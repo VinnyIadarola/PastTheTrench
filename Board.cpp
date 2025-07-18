@@ -1,10 +1,10 @@
 /**
-* @file    grid.cpp
+* @file    Board.cpp
 * @brief   [Short description of what this header provides.]
 * @author  Vincent Iadarola
 * @date    2025-07-15
 **/
-#include <Grid.h>
+#include <Board.h>
 
 
 
@@ -15,29 +15,29 @@
 /**********************************************************
 **              Constructors & Destructors               **
 **********************************************************/
-Grid::Grid(int _rows, int _cols) {
+Board::Board(int _rows, int _cols) {
     rows = _rows;
     cols = _cols;
 
     if(test_gen)            
-        board = make_default_grid();
+        grid = make_default_Board();
 
 }
 
- Grid::~Grid() = default;
+ Board::~Board() = default;
 
 
 
 /**********************************************************
 **                    Public Functions                   **
 **********************************************************/
-bool Grid::in_bounds(int row, int col) {
+bool Board::in_bounds(int row, int col) {
     return (row >= 0) && (row < rows) && (col >= 0) && (col < cols);
 }
 
 
 /** @brief */
-vector<Tile> Grid::get_adjacent(Tile t) {
+vector<Tile> Board::get_adjacent(Tile t) {
     if (!in_bounds(t.row, t.col)) throw out_of_range("get_adject: index out of bounds");
     
     static constexpr int DIRS[4][2] = {
@@ -54,7 +54,7 @@ vector<Tile> Grid::get_adjacent(Tile t) {
         int r = t.row + d[0];
         int c = t.col + d[1];
         if (in_bounds(r, c))
-            adj.push_back(board[r][c]);
+            adj.push_back(grid[r][c]);
     }
 
     return adj;
@@ -62,26 +62,32 @@ vector<Tile> Grid::get_adjacent(Tile t) {
 
 
 /** @brief */
-vector<Tile> Grid::get_row(int r) {
-    return board[r];
+vector<Tile> Board::get_row(int r) {
+    return grid[r];
 }
 
 
 /** @brief */
-vector<Tile> Grid::get_col(int c) {
+vector<Tile> Board::get_col(int c) {
     vector<Tile> col;
     col.reserve(cols);
 
     for(int i = 0; i < rows; i++) {
-        col.push_back(board[i][c]);
+        col.push_back(grid[i][c]);
     }
 
     return col;
 }
 
 /** @brief */
-Tile Grid::at(int r, int c) {
-    return board[r][c];
+Tile Board::at(int r, int c) {
+    return grid[r][c];
+}
+
+
+void Board::set_Board(vector<vector<Tile>> &new_grid){
+    grid = new_grid;
+
 }
 
 
@@ -90,13 +96,13 @@ Tile Grid::at(int r, int c) {
 **                    Private Functions                  **
 **********************************************************/
 
-vector<vector<Tile>> Grid::make_default_grid(){
+vector<vector<Tile>> Board::make_default_Board(){
 
-    vector<vector<Tile>> grid(rows, vector<Tile>(cols));
+    vector<vector<Tile>> Board(rows, vector<Tile>(cols));
 
-    for (vector<Tile>& row : grid)
+    for (vector<Tile>& row : Board)
         for (Tile& t : row)
             t = Tile();
 
-    return grid;
+    return Board;
 }

@@ -46,7 +46,7 @@ class Tile {
         **                     Public Fields                     **
         **********************************************************/
         TileType type;
-        Cover cover;
+        Cover cover = {};
 
         Unit* occupied_by;
         int traverse_cost;
@@ -57,14 +57,17 @@ class Tile {
         /**********************************************************
         **              Constructors & Destructors               **
         **********************************************************/
-        Tile(TileType _type, 
-            Cover _cover, 
-            int _traverse_cost, 
-            Unit* _occupied_by,
-            int _row,
-            int _col
+        Tile(TileType _type = TileType::GROUND, 
+            Cover _cover = {}, 
+            Unit* _occupied_by = nullptr,
+
+            int _traverse_cost = 1, 
+            int _row = 0,
+            int _col = 0
         );
-        virtual ~Tile();
+
+
+        virtual ~Tile() = default;
 
 
 

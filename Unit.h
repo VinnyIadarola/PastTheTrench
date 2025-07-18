@@ -7,6 +7,12 @@
  * @date    2025-07-15
  */
 
+/**********************************************************
+**                  Imports and Includes                 **
+**********************************************************/
+#include <string>
+using namespace std;
+
 class Unit {
     public:
         /**********************************************************
@@ -18,19 +24,18 @@ class Unit {
         /**********************************************************
         **              Constructors & Destructors               **
         **********************************************************/
-        Unit(int max_health, int current_health, int endurance_val);
-        virtual ~Unit();
+        Unit(int max_health = 100, int current_health = 100, int endurance_val = 100);
+        virtual ~Unit() = default;
 
 
         /**********************************************************
         **                     Public Functions                  **
         **********************************************************/
         // Health
-        virtual void update_health(int val);
+        virtual int update_health(int val);
 
         //Endurance
-        virtual bool can_update_endurance();
-        virtual void update_endurance(int val);
+        virtual int update_endurance(int val);
 
 
 
@@ -44,7 +49,9 @@ class Unit {
         /**********************************************************
         **                    Private Functions                  **
         **********************************************************/
-        virtual void death();
+        virtual string death();
+        virtual bool can_update_endurance();
+
 
 };
 

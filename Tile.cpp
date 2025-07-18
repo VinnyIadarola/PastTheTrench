@@ -22,11 +22,11 @@
 **              Constructors & Destructors               **
 **********************************************************/
 Tile::Tile(TileType _type = TileType::GROUND, 
-    Cover _cover = {}, 
-    int _traverse_cost = 1, 
-    Unit* _occupied_by = nullptr,
-    int _row = 0,
-    int _col = 0
+    Cover _cover, 
+    int _traverse_cost, 
+    Unit* _occupied_by,
+    int _row,
+    int _col
 ) {
     type = _type;
     cover = _cover;
@@ -36,5 +36,4 @@ Tile::Tile(TileType _type = TileType::GROUND,
     col = _col;
 };
 
-        virtual ~Tile() = default;
 

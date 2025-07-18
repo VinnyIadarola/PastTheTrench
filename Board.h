@@ -1,5 +1,5 @@
 /**
-* @file    grid.h
+* @file    Board.h
 * @brief   [Short description of what this header provides.]
 * @author  Vincent Iadarola
 * @date    2025-07-15
@@ -28,7 +28,7 @@ const extern bool test_gen = true; //testvariable delete later
 
 
 
-class Grid {
+class Board {
     public:
         /**********************************************************
         **                     Public Fields                     **
@@ -38,8 +38,10 @@ class Grid {
         /**********************************************************
         **              Constructors & Destructors               **
         **********************************************************/
-        Grid(int _rows, int _cols);
-        virtual ~Grid();
+        Board
+    (int _rows, int _cols);
+        virtual ~Board
+    ();
 
         /**********************************************************
         **                    Public Functions                   **
@@ -50,19 +52,29 @@ class Grid {
         Tile at(int r, int c);
         bool in_bounds(int row, int col);
 
+        void set_Board
+    (vector<vector<Tile>> &new_grid);
+
+
     private:
         /**********************************************************
         **                     Private Fields                    **
         **********************************************************/
         int rows, cols;
-        vector<vector<Tile>> board;
 
         
 
         /**********************************************************
         **                    Private Functions                  **
         **********************************************************/
-        vector<vector<Tile>> make_default_grid();
+        vector<vector<Tile>> make_default_Board
+    ();
+
+    protected:
+        vector<vector<Tile>> grid; 
+
+
+
 
 
 
