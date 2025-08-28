@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/SDL3/x86_64-w64-mingw32/lib",
+        "C:/SDL3/x86_64-w64-mingw32/include"
+      ],
+      "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerArgs": [
+        "-Ix86_64-w64-mingw32/include",
+        "-Lx86_64-w64-mingw32/lib",
+        "-lSDL3"
+      ]
+    }
+  ],
+  "version": 4
+}
