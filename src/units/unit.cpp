@@ -1,10 +1,9 @@
 #include "unit.hpp"
-#include <queue>
-#include <unordered_map>
-#include <cmath>
+
 
 using std::priority_queue;
 using std::unordered_map;
+using std::list;
 
 /******************************************************
 ***                   Constructors                  ***
@@ -165,3 +164,11 @@ bool inline Unit::checkRectangle(GridSpace &board, int &total_cost, const int x,
     return true;
 }
 
+
+const unordered_map<Coordinate, Coordinate>& Unit::getValidMoves() const {
+    return moves_;
+}
+
+const list<Unit::Opponents>& Unit::getValidTargets() const {
+    return visibile_opponents_;
+}   

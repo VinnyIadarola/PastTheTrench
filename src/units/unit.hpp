@@ -6,7 +6,8 @@
 #include <list>
 #include "../framework/board.hpp"
 #include <unordered_map>
-
+#include <queue>
+#include <cmath>
 
 class Unit {
     public:
@@ -58,10 +59,10 @@ class Unit {
         Status updateValidMoves(GridSpace &board);
         virtual Status updateVisibleOpponents(std::list<Unit*> activeUnits) = 0;
 
-        std::unordered_map<Coordinate, Coordinate>& getValidMoves() const;
-        std::list<Opponents>& getValidTargets() const;
+        const std::unordered_map<Coordinate, Coordinate>& getValidMoves() const;
+        const std::list<Opponents>& getValidTargets() const;
 
-        Status moveTiles(Coordinate &dest);
+        virtual Status moveTiles(Coordinate &dest) = 0;
 
 
 
@@ -113,7 +114,7 @@ class Unit {
         UnitState state_;
 
         // positional details
-        Coordinate pos_; //centered around 
+        Coordinate pos_; // represents top left any width is to the right and lenght below. does not stay when rotated
         Dim dim_;
         std::unordered_map<Coordinate, Coordinate> moves_;
         std::list<Opponents> visibile_opponents_;
@@ -130,8 +131,8 @@ class Unit {
 
 
 
-        private:
-            bool inline checkRectangle(GridSpace &board, int &total_cost, const int x, const int y, const int x_dir, const int y_dir);
+    private:
+        bool inline checkRectangle(GridSpace &board, int &total_cost, const int x, const int y, const int x_dir, const int y_dir);
 
 };
 
